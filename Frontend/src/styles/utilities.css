@@ -1,0 +1,216 @@
+﻿/* ==========================================================================
+   UTILITIES — layout primitives + buttons
+   ========================================================================== */
+
+.nx-container {
+  width: 100%;
+  max-width: var(--nx-max-w);
+  margin-inline: auto;
+  padding-inline: var(--nx-gutter);
+}
+
+.nx-eyebrow {
+  font-family: var(--nx-font-mono);
+  font-size: var(--nx-fs-2xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--nx-accent-ink);
+}
+
+:root[data-theme="dark"] .nx-eyebrow {
+  color: #7DD3FC;
+}
+
+.nx-section { padding-block: clamp(56px, 8vw, 96px); }
+
+/* ---------------- BUTTONS ---------------- */
+
+.nx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--nx-r-pill);
+  font-size: var(--nx-fs-sm);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transform: translateY(0);
+  transition:
+    transform 140ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 140ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 140ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 140ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 140ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nx-btn:focus-visible {
+  outline: 2px solid var(--nx-accent);
+  outline-offset: 2px;
+}
+
+/* --- Primary: dark navy in light, inverted in dark --- */
+
+.nx-btn--primary {
+  background: #0F172A;
+  color: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+}
+.nx-btn--primary:hover {
+  background: #1E293B;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px -6px rgba(15, 23, 42, 0.35);
+}
+.nx-btn--primary:active {
+  background: #0F172A;
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.15);
+}
+
+:root[data-theme="dark"] .nx-btn--primary {
+  background: #F1F5F9;
+  color: #0F172A;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+:root[data-theme="dark"] .nx-btn--primary:hover {
+  background: #FFFFFF;
+  color: #0F172A;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -6px rgba(241, 245, 249, 0.28);
+}
+:root[data-theme="dark"] .nx-btn--primary:active {
+  background: #E2E8F0;
+  color: #0F172A;
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Accent: brand blue --- */
+
+.nx-btn--accent {
+  background: #32B8FB;
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px -6px rgba(50, 184, 251, 0.5);
+}
+.nx-btn--accent:hover {
+  background: #1FA8EB;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -8px rgba(50, 184, 251, 0.6);
+}
+.nx-btn--accent:active {
+  background: #0E97DA;
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 4px 12px -4px rgba(50, 184, 251, 0.45);
+}
+
+:root[data-theme="dark"] .nx-btn--accent {
+  background: #38BDF8;
+  color: #0B1220;
+  box-shadow: 0 6px 20px -6px rgba(56, 189, 248, 0.55);
+}
+:root[data-theme="dark"] .nx-btn--accent:hover {
+  background: #7DD3FC;
+  color: #0B1220;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -8px rgba(125, 211, 252, 0.6);
+}
+:root[data-theme="dark"] .nx-btn--accent:active {
+  background: #0EA5E9;
+  color: #0B1220;
+  transform: translateY(0) scale(0.97);
+}
+
+/* --- Ghost: outline --- */
+
+.nx-btn--ghost {
+  background: transparent;
+  color: var(--nx-ink);
+  border: 1px solid var(--nx-line);
+}
+.nx-btn--ghost:hover {
+  border-color: var(--nx-ink);
+  background: var(--nx-bg-alt);
+  transform: translateY(-1px);
+}
+.nx-btn--ghost:active {
+  transform: translateY(0) scale(0.98);
+  background: var(--nx-bg-alt);
+}
+
+:root[data-theme="dark"] .nx-btn--ghost {
+  color: #E2E8F0;
+  border-color: #334155;
+  background: transparent;
+}
+:root[data-theme="dark"] .nx-btn--ghost:hover {
+  color: #FFFFFF;
+  border-color: #64748B;
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+:root[data-theme="dark"] .nx-btn--ghost:active {
+  transform: translateY(0) scale(0.98);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* --- Danger: red (for logout, remove, etc.) --- */
+
+.nx-btn--danger {
+  background: #DC2626;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px -4px rgba(220, 38, 38, 0.45);
+}
+.nx-btn--danger:hover {
+  background: #B91C1C;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -6px rgba(220, 38, 38, 0.55);
+}
+.nx-btn--danger:active {
+  background: #991B1B;
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 6px -2px rgba(220, 38, 38, 0.45);
+}
+
+:root[data-theme="dark"] .nx-btn--danger {
+  background: #EF4444;
+  color: #FFFFFF;
+}
+:root[data-theme="dark"] .nx-btn--danger:hover {
+  background: #F87171;
+  color: #0B1220;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -6px rgba(239, 68, 68, 0.55);
+}
+:root[data-theme="dark"] .nx-btn--danger:active {
+  background: #DC2626;
+  color: #FFFFFF;
+  transform: translateY(0) scale(0.97);
+}
+
+/* ---------------- CARD ---------------- */
+
+.nx-card {
+  background: var(--nx-surface);
+  border: 1px solid var(--nx-line);
+  border-radius: var(--nx-r-lg);
+  padding: var(--nx-s-6);
+  box-shadow: var(--nx-shadow-xs);
+}
+
+/* ---------------- REVEAL ---------------- */
+
+.nx-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--nx-dur-slow) var(--nx-ease-out),
+    transform var(--nx-dur-slow) var(--nx-ease-out);
+}
+.nx-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}

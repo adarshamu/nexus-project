@@ -1,0 +1,223 @@
+/* ==========================================================================
+   LOADING — three interlocked cogs, all in the Nexus accent family
+   ========================================================================== */
+
+.nx-loader {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  background: var(--nx-bg);
+  overflow: hidden;
+  padding: 32px 20px;
+}
+
+.nx-loader--inline {
+  min-height: 260px;
+  padding: 40px 20px;
+}
+
+/* ---------- Stage ---------- */
+
+.nx-loader__stage {
+  position: relative;
+  width: 400px;
+  max-width: 100%;
+  height: 180px;
+  display: grid;
+  place-items: center;
+}
+
+.nx-loader__overlay {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    0 0 0 1000px rgba(255, 255, 255, 0.55),
+    inset 0 0 19px 0 rgba(0, 0, 0, 0.14);
+  z-index: 1;
+  pointer-events: none;
+}
+
+:root[data-theme="dark"] .nx-loader__overlay {
+  box-shadow:
+    0 0 0 1000px rgba(11, 18, 32, 0.55),
+    inset 0 0 19px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Cogs container ---------- */
+
+.nx-loader__cogs {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+}
+
+/* ---------- Shared cog styles ---------- */
+
+.nx-loader__cog {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.nx-loader__cog .nx-loader__part {
+  position: absolute;
+  border-radius: 10px;
+}
+.nx-loader__cog .nx-loader__hole {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 50%;
+  background: var(--nx-bg);
+}
+
+/* ---------- Top cog — primary accent blue ---------- */
+
+.nx-loader__cog--top {
+  width: 100px;
+  height: 100px;
+  transform-origin: 50px 50px;
+  animation: nx-cog-rotate 10s infinite linear;
+}
+
+.nx-loader__cog--top .nx-loader__part {
+  width: 100px;
+  height: 100px;
+  background: #32B8FB;                /* --nx-accent */
+}
+.nx-loader__cog--top .nx-loader__part:nth-of-type(1) { transform: rotate(30deg); }
+.nx-loader__cog--top .nx-loader__part:nth-of-type(2) { transform: rotate(60deg); }
+.nx-loader__cog--top .nx-loader__part:nth-of-type(3) { transform: rotate(90deg); }
+
+.nx-loader__cog--top .nx-loader__hole {
+  width: 50px;
+  height: 50px;
+}
+
+/* ---------- Left cog — deep accent ink ---------- */
+
+.nx-loader__cog--left {
+  width: 80px;
+  height: 80px;
+  transform-origin: 40px 40px;
+  top: 28px;
+  left: -24px;
+  animation: nx-cog-rotate-left 10s 0.1s infinite linear;
+}
+
+.nx-loader__cog--left .nx-loader__part {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  background: #0A6FA0;                /* --nx-accent-ink */
+}
+.nx-loader__cog--left .nx-loader__part:nth-of-type(1) { transform: rotate(30deg); }
+.nx-loader__cog--left .nx-loader__part:nth-of-type(2) { transform: rotate(60deg); }
+.nx-loader__cog--left .nx-loader__part:nth-of-type(3) { transform: rotate(90deg); }
+
+.nx-loader__cog--left .nx-loader__hole {
+  width: 40px;
+  height: 40px;
+}
+
+/* ---------- Bottom cog — light accent tint ---------- */
+
+.nx-loader__cog--bottom {
+  width: 60px;
+  height: 60px;
+  transform-origin: 30px 30px;
+  top: 105px;
+  left: 79px;
+  animation: nx-cog-rotate-left 10.2s 0.4s infinite linear;
+}
+
+.nx-loader__cog--bottom .nx-loader__part {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  background: #7DD3FC;                /* accent tint */
+}
+.nx-loader__cog--bottom .nx-loader__part:nth-of-type(1) { transform: rotate(30deg); }
+.nx-loader__cog--bottom .nx-loader__part:nth-of-type(2) { transform: rotate(60deg); }
+.nx-loader__cog--bottom .nx-loader__part:nth-of-type(3) { transform: rotate(90deg); }
+
+.nx-loader__cog--bottom .nx-loader__hole {
+  width: 30px;
+  height: 30px;
+}
+
+/* ---------- Dark mode — brighten the deep cog so it stays visible ---------- */
+
+:root[data-theme="dark"] .nx-loader__cog--left .nx-loader__part {
+  background: #38BDF8;                /* brighter in dark */
+}
+:root[data-theme="dark"] .nx-loader__cog--top .nx-loader__part {
+  background: #7DD3FC;                /* nudge top cog lighter too */
+}
+:root[data-theme="dark"] .nx-loader__cog--bottom .nx-loader__part {
+  background: #BAE6FD;                /* palest of the three */
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes nx-cog-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes nx-cog-rotate-left {
+  from { transform: rotate(16deg); }
+  to   { transform: rotate(-344deg); }
+}
+
+/* ---------- Label ---------- */
+
+.nx-loader__label {
+  font-family: var(--nx-font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--nx-muted);
+  margin: 0;
+}
+
+.nx-loader__dots span {
+  animation: nx-loader-dot 1.4s infinite;
+  opacity: 0;
+}
+.nx-loader__dots span:nth-child(1) { animation-delay: 0s; }
+.nx-loader__dots span:nth-child(2) { animation-delay: 0.2s; }
+.nx-loader__dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes nx-loader-dot {
+  0%, 20%   { opacity: 0; }
+  50%       { opacity: 1; }
+  100%      { opacity: 0; }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .nx-loader__cog--top,
+  .nx-loader__cog--left,
+  .nx-loader__cog--bottom {
+    animation-duration: 40s;
+  }
+  .nx-loader__dots span { animation: none; opacity: 1; }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 480px) {
+  .nx-loader__stage { transform: scale(0.85); }
+}

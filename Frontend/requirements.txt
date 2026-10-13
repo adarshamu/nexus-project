@@ -1,0 +1,70 @@
+# =============================================================================
+# Nexus — Frontend Dependencies
+# =============================================================================
+# Note: This is NOT a Python requirements file. This is a reference manifest
+# for the Node.js project. The actual installation is driven by package.json.
+#
+# To install everything:
+#   npm install
+#
+# To install a specific package at the exact version below:
+#   npm install <package>@<version>
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Runtime dependencies
+# -----------------------------------------------------------------------------
+
+react==19.2.8
+react-dom==19.2.8
+react-router-dom==7.18.4
+
+# -----------------------------------------------------------------------------
+# Build / dev dependencies
+# -----------------------------------------------------------------------------
+
+vite==8.3.0
+@vitejs/plugin-react==6.1.1
+@rolldown/plugin-babel==0.2.3
+@babel/core==7.29.7
+babel-plugin-react-compiler==1.0.0
+
+# -----------------------------------------------------------------------------
+# Linting
+# -----------------------------------------------------------------------------
+
+eslint==10.10.0
+@eslint/js==10.0.1
+eslint-plugin-react-hooks==7.1.1
+eslint-plugin-react-refresh==0.5.6
+globals==17.12.0
+
+# -----------------------------------------------------------------------------
+# Type definitions (used by the editor, not shipped)
+# -----------------------------------------------------------------------------
+
+@types/react==19.2.18
+@types/react-dom==19.2.7
+
+# =============================================================================
+# External assets (not installed via npm)
+# =============================================================================
+#
+# Fonts (loaded via <link> in index.html, requires internet at runtime):
+#   - Inter          (400, 500, 600, 700, 800)
+#   - Space Grotesk  (500, 600, 700)
+#   - Arvo           (400, 700) — used only by the 404 page
+#
+# Font URL:
+#   https://fonts.googleapis.com/css2?family=Arvo:wght@400;700
+#       &family=Inter:wght@400;500;600;700;800
+#       &family=Space+Grotesk:wght@500;600;700&display=swap
+#
+# 404 page illustration (external CDN):
+#   https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif
+#
+# Runtime requirements:
+#   - Node.js >= 18.0.0
+#   - npm       >= 9.0.0
+#
+# =============================================================================

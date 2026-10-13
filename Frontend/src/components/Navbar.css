@@ -1,0 +1,135 @@
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+
+.nx-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  background: rgba(251, 251, 251, 0.82);
+  border-bottom: 1px solid var(--nx-line);
+  transition: background var(--nx-dur-ui) var(--nx-ease-out),
+              border-color var(--nx-dur-ui) var(--nx-ease-out);
+}
+
+:root[data-theme="dark"] .nx-nav {
+  background: rgba(11, 18, 32, 0.82);
+}
+
+.nx-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nx-s-6);
+  height: 78px;
+}
+
+.nx-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity var(--nx-dur-fast) var(--nx-ease-out);
+}
+.nx-nav__brand:hover { opacity: 0.88; }
+
+/* -------- Nav pills -------- */
+
+.nx-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--nx-r-pill);
+  background: var(--nx-surface);
+  border: 1px solid var(--nx-line);
+  box-shadow: var(--nx-shadow-xs);
+}
+
+:root[data-theme="dark"] .nx-nav__links {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.nx-nav__link {
+  padding: 9px 16px;
+  font-size: var(--nx-fs-sm);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--nx-muted);
+  border-radius: var(--nx-r-pill);
+  transition:
+    color var(--nx-dur-fast) var(--nx-ease-out),
+    background var(--nx-dur-fast) var(--nx-ease-out);
+}
+
+.nx-nav__link:hover {
+  color: var(--nx-ink);
+  background: var(--nx-bg-alt);
+}
+
+/* Dark mode — make links readable against the dark surface */
+:root[data-theme="dark"] .nx-nav__link {
+  color: #CBD5E1;
+}
+:root[data-theme="dark"] .nx-nav__link:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* -------- Right actions -------- */
+
+.nx-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* -------- Login button -------- */
+
+.nx-nav__login {
+  padding: 11px 24px;
+  background: #0F172A;
+  color: #FFFFFF;
+  font-size: var(--nx-fs-sm);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  border-radius: var(--nx-r-pill);
+  border: 1px solid transparent;
+  transition:
+    background var(--nx-dur-fast) var(--nx-ease-out),
+    color var(--nx-dur-fast) var(--nx-ease-out),
+    transform var(--nx-dur-fast) var(--nx-ease-out),
+    box-shadow var(--nx-dur-fast) var(--nx-ease-out);
+}
+
+.nx-nav__login:hover {
+  background: var(--nx-accent);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: var(--nx-shadow-glow);
+}
+
+/* Dark mode — flip the button so it doesn't disappear into the background */
+:root[data-theme="dark"] .nx-nav__login {
+  background: var(--nx-accent);
+  color: #0B1220;
+  border-color: transparent;
+}
+:root[data-theme="dark"] .nx-nav__login:hover {
+  background: #7DD3FC;
+  color: #0B1220;
+  box-shadow: 0 8px 30px -8px rgba(56, 189, 248, 0.55);
+}
+
+.nx-nav__login:focus-visible {
+  outline: 2px solid var(--nx-accent);
+  outline-offset: 2px;
+}
+
+/* -------- Responsive -------- */
+
+@media (max-width: 860px) {
+  .nx-nav__links { display: none; }
+}

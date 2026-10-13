@@ -1,0 +1,20 @@
+﻿html, body, #root { height: 100%; }
+body {
+  font-family: var(--nx-font-sans);
+  font-size: var(--nx-fs-body);
+  line-height: 1.6;
+  color: var(--nx-ink);
+  background: var(--nx-bg);
+}
+h1, h2, h3, h4 {
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--nx-ink);
+}
+h1 { font-size: var(--nx-fs-h1); }
+h2 { font-size: var(--nx-fs-h2); }
+h3 { font-size: var(--nx-fs-h3); }
+a { transition: color var(--nx-dur-fast) var(--nx-ease-out); }
+code, pre { font-family: var(--nx-font-mono); font-size: 0.9em; }
+::selection { background: var(--nx-accent); color: #fff; }

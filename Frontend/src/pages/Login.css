@@ -1,0 +1,327 @@
+/* ==========================================================================
+   LOGIN
+   ========================================================================== */
+
+.nx-login {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  background: var(--nx-bg);
+}
+
+/* ---------------- LEFT — illustration ---------------- */
+
+.nx-login__aside {
+  position: relative;
+  background: linear-gradient(165deg, #0F172A 0%, #1E293B 60%, #0A6FA0 140%);
+  color: #fff;
+  padding: clamp(24px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  isolation: isolate;
+}
+.nx-login__aside .nx-logo { color: #fff; }
+.nx-login__brand { display: inline-flex; }
+
+.nx-login__art {
+  position: relative;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  margin-block: var(--nx-s-6);
+  min-height: 320px;
+}
+
+.nx-login__phone {
+  position: relative;
+  width: min(260px, 70%);
+  aspect-ratio: 3 / 5;
+  border-radius: 32px;
+  background: linear-gradient(180deg, #1D4ED8, #2563EB);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6),
+              inset 0 0 0 4px rgba(255, 255, 255, 0.06);
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  z-index: 2;
+  transform: rotate(-4deg);
+}
+
+.nx-login__lock {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: #EC4899;
+  display: grid; place-items: center; color: #fff;
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.5);
+}
+
+.nx-login__avatar {
+  width: 68px; height: 68px; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  display: grid; place-items: center; color: #fff;
+  margin-top: 4px;
+}
+
+.nx-login__bar {
+  width: 78%; height: 12px;
+  border-radius: var(--nx-r-pill);
+  background: rgba(255, 255, 255, 0.22);
+}
+.nx-login__bar--short { width: 58%; }
+
+.nx-login__cta {
+  margin-top: auto;
+  width: 100%; padding: 10px;
+  border-radius: var(--nx-r-pill);
+  background: #EC4899;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: default;
+}
+
+.nx-login__blob { position: absolute; border-radius: 50%; filter: blur(2px); z-index: 1; }
+.nx-login__blob--a { width: 90px;  height: 90px;  background: #EC4899; top: 6%; left: 8%; opacity: 0.55; }
+.nx-login__blob--b { width: 140px; height: 140px; border: 2px dashed rgba(255, 255, 255, 0.25); bottom: 10%; right: 6%; }
+.nx-login__blob--c { width: 60px;  height: 60px;  background: rgba(255, 255, 255, 0.10); top: 60%; left: 4%; }
+
+.nx-login__aside-foot { position: relative; z-index: 2; }
+.nx-login__aside-foot h2 {
+  color: #fff;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.nx-login__aside-foot p { color: #94A3B8; font-size: var(--nx-fs-sm); }
+
+/* ---------------- RIGHT — form ---------------- */
+
+.nx-login__main {
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 5vw, 64px);
+}
+
+.nx-login__card {
+  width: 100%;
+  max-width: 420px;
+  animation: nx-rise 500ms var(--nx-ease-out) both;
+}
+
+@keyframes nx-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.nx-login__head { margin-bottom: var(--nx-s-6); }
+
+.nx-login__title {
+  margin-top: 10px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.nx-login__sub {
+  margin-top: 8px;
+  color: var(--nx-muted);
+  font-size: var(--nx-fs-sm);
+}
+
+.nx-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nx-s-4);
+}
+
+/* ---------------- Field ----------------
+   Layout: [ icon ] [ input …………… ] [ optional right icon ]
+   The icon and input are SIBLINGS in a flex row, so they can never
+   overlap regardless of padding, theme, or field width. */
+
+.nx-field { display: flex; flex-direction: column; gap: 8px; }
+
+.nx-field__label {
+  font-size: var(--nx-fs-xs);
+  font-weight: 600;
+  color: var(--nx-ink);
+  line-height: 1.2;
+}
+
+.nx-field__control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  height: 48px;
+  border-radius: var(--nx-r-md);
+  border: 1px solid var(--nx-line);
+  background: var(--nx-surface);
+  transition:
+    border-color 140ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 140ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 140ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nx-field__control:focus-within {
+  border-color: var(--nx-accent);
+  box-shadow: 0 0 0 4px rgba(50, 184, 251, 0.15);
+}
+
+/* Icons — flex children, so they take their natural width */
+.nx-field__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--nx-muted);
+  line-height: 0;
+}
+
+.nx-field__icon--left {
+  width: 20px;
+  height: 20px;
+}
+
+.nx-field__icon--right {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+/* The input itself is a flex child, filling remaining space */
+.nx-field__control input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--nx-ink);
+  font-size: var(--nx-fs-sm);
+  font-family: inherit;
+  padding: 0;
+}
+
+.nx-field__control input::placeholder {
+  color: var(--nx-muted-2);
+}
+
+/* Chrome autofill override so the input stays on-brand in both themes */
+.nx-field__control input:-webkit-autofill,
+.nx-field__control input:-webkit-autofill:hover,
+.nx-field__control input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--nx-ink);
+  -webkit-box-shadow: 0 0 0 1000px var(--nx-surface) inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Eye toggle button */
+.nx-field__eye {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--nx-muted);
+  padding: 0;
+  transition: color 140ms ease, background 140ms ease;
+}
+
+.nx-field__eye:hover {
+  color: var(--nx-ink);
+  background: var(--nx-bg-alt);
+}
+
+.nx-field__eye:focus-visible {
+  outline: 2px solid var(--nx-accent);
+  outline-offset: 2px;
+}
+
+.nx-field__eye:active {
+  transform: scale(0.94);
+}
+
+/* ---------------- Dark mode ---------------- */
+
+:root[data-theme="dark"] .nx-field__control {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: #334155;
+}
+
+:root[data-theme="dark"] .nx-field__control:focus-within {
+  border-color: #38BDF8;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="dark"] .nx-field__control input {
+  color: #F1F5F9;
+}
+
+:root[data-theme="dark"] .nx-field__control input::placeholder {
+  color: #64748B;
+}
+
+:root[data-theme="dark"] .nx-field__icon {
+  color: #94A3B8;
+}
+
+:root[data-theme="dark"] .nx-field__eye:hover {
+  color: #F1F5F9;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+:root[data-theme="dark"] .nx-field__control input:-webkit-autofill,
+:root[data-theme="dark"] .nx-field__control input:-webkit-autofill:hover,
+:root[data-theme="dark"] .nx-field__control input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #F1F5F9;
+  -webkit-box-shadow: 0 0 0 1000px #1E293B inset;
+}
+
+/* ---------------- Error / checkbox / submit ---------------- */
+
+.nx-login__error {
+  margin: 0;
+  font-size: var(--nx-fs-xs);
+  color: var(--nx-danger);
+  padding: 8px 12px;
+  background: var(--nx-danger-soft);
+  border-radius: var(--nx-r-sm);
+  line-height: 1.5;
+}
+
+.nx-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--nx-muted);
+  cursor: pointer;
+  font-size: var(--nx-fs-xs);
+}
+.nx-check input { accent-color: var(--nx-accent); }
+.nx-check--solo { margin-top: 2px; }
+
+.nx-login__submit {
+  margin-top: var(--nx-s-4);
+  padding: 14px;
+  font-size: var(--nx-fs-sm);
+  width: 100%;
+}
+
+.nx-login__hint {
+  margin-top: var(--nx-s-6);
+  font-size: var(--nx-fs-xs);
+  color: var(--nx-muted);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 900px) {
+  .nx-login { grid-template-columns: 1fr; }
+  .nx-login__aside { display: none; }
+}

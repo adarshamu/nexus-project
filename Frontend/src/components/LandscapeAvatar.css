@@ -1,0 +1,74 @@
+/* ==========================================================================
+   LANDSCAPE AVATAR
+   Flat-design scenic SVGs in a circular or square frame.
+   Used in: Human API expert cards, Profile page, Avatar picker grid, Chat header.
+   ========================================================================== */
+
+/* ---------------- Base ---------------- */
+
+.nx-av {
+  display: inline-block;
+  flex-shrink: 0;
+  overflow: hidden;
+  vertical-align: middle;
+  background: var(--nx-bg-alt);
+  box-shadow:
+    0 0 0 2px var(--nx-surface),
+    0 0 0 3px var(--nx-line);
+}
+
+.nx-av svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------------- Shape variants ---------------- */
+
+.nx-av--circle { border-radius: 50%; }
+.nx-av--square { border-radius: 12px; }
+
+/* ---------------- Ring-less modifier ---------------- */
+
+.nx-av--flush {
+  box-shadow: none;
+  border-radius: 50%;
+}
+
+/* ---------------- Parent context overrides ----------------
+   More specific than the base rule → cascade handles it, no !important. */
+
+/* Profile page — parent button owns the frame */
+.nx-set__avatar-btn .nx-av {
+  box-shadow: none;
+  border-radius: 50%;
+}
+
+/* Avatar picker grid — each tile has its own frame */
+.nx-av-option .nx-av {
+  box-shadow: none;
+  border-radius: 50%;
+}
+
+/* Chat header — sits on the header surface, ring echoes that */
+.nx-chat__head .nx-av {
+  box-shadow:
+    0 0 0 2px var(--nx-surface),
+    0 0 0 3px var(--nx-line);
+}
+
+/* ---------------- Dark mode ----------------
+   Hardcoded hex values because the ring needs to match the surface the
+   avatar sits on, not the ambient page background. */
+
+:root[data-theme="dark"] .nx-av {
+  background: #1E293B;
+  box-shadow:
+    0 0 0 2px #131C2E,
+    0 0 0 3px #334155;
+}
+
+:root[data-theme="dark"] .nx-set__avatar-btn .nx-av,
+:root[data-theme="dark"] .nx-av-option .nx-av {
+  box-shadow: none;
+}

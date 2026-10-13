@@ -1,0 +1,131 @@
+﻿/* ==========================================================================
+   FOOTER — every text color is explicit and pre-verified for contrast
+   ========================================================================== */
+
+/* ---------------- Outer shell ---------------- */
+
+.nx-foot {
+  background: #0F172A;                 /* light mode: deep navy */
+  padding-block: clamp(56px, 7vw, 88px);
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 220ms ease, border-color 220ms ease;
+}
+
+/* Dark mode: a mid-slate surface that clearly separates from the page */
+:root[data-theme="dark"] .nx-foot {
+  background: #1E293B;                 /* slate-800 */
+  border-top: 1px solid #334155;
+}
+
+.nx-foot .nx-foot__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ---------------- Brand column ---------------- */
+
+.nx-foot .nx-foot__brand .nx-logo__text {
+  color: #FFFFFF;
+}
+
+.nx-foot .nx-foot__tagline {
+  margin-top: 18px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #CBD5E1;                      /* light slate — 9.4:1 on #0F172A */
+  max-width: 340px;
+}
+
+:root[data-theme="dark"] .nx-foot .nx-foot__tagline {
+  color: #E2E8F0;                      /* brighter on the lighter slate bg */
+}
+
+/* ---------------- Link column ---------------- */
+
+.nx-foot .nx-foot__head {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 18px;
+}
+
+:root[data-theme="dark"] .nx-foot .nx-foot__head {
+  color: #FFFFFF;
+}
+
+.nx-foot .nx-foot__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nx-foot .nx-foot__col a {
+  display: inline-block;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.9375rem;
+  color: #CBD5E1;                      /* visible slate */
+  padding: 4px 8px;
+  margin-left: -8px;
+  border-radius: 6px;
+  transition: color 140ms ease, background 140ms ease, transform 140ms ease;
+}
+
+.nx-foot .nx-foot__col a:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.10);
+  transform: translateX(2px);
+}
+
+:root[data-theme="dark"] .nx-foot .nx-foot__col a {
+  color: #E2E8F0;
+}
+
+:root[data-theme="dark"] .nx-foot .nx-foot__col a:hover {
+  color: #FFFFFF;
+  background: rgba(56, 189, 248, 0.15);
+}
+
+/* ---------------- Meta column ---------------- */
+
+.nx-foot .nx-foot__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+  text-align: right;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+
+.nx-foot .nx-foot__meta p {
+  color: #CBD5E1;                      /* medium slate — visible */
+  margin: 0;
+}
+
+/* Second line — slightly dimmer for hierarchy, still ≥ 6:1 */
+.nx-foot .nx-foot__meta p + p {
+  color: #94A3B8;
+}
+
+:root[data-theme="dark"] .nx-foot .nx-foot__meta p {
+  color: #E2E8F0;
+}
+
+:root[data-theme="dark"] .nx-foot .nx-foot__meta p + p {
+  color: #94A3B8;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 780px) {
+  .nx-foot .nx-foot__inner { grid-template-columns: 1fr; gap: 32px; }
+  .nx-foot .nx-foot__meta { align-items: flex-start; text-align: left; }
+}

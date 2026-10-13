@@ -1,0 +1,278 @@
+/* ==========================================================================
+   SIDEBAR
+   ========================================================================== */
+
+.nx-side {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: var(--nx-sidebar-bg);
+  color: var(--nx-sidebar-ink);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+  gap: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.nx-side__top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 34px;
+}
+
+.nx-side__top-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nx-side__brand { display: inline-flex; align-items: center; min-width: 0; }
+.nx-side__brand .nx-logo { color: #fff; }
+
+.nx-side .nx-theme-toggle--dark {
+  width: 34px;
+  height: 34px;
+}
+
+.nx-side__bell {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--nx-r-sm);
+  color: var(--nx-sidebar-muted);
+  transition: background 140ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 140ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nx-side__bell:hover { background: var(--nx-sidebar-active); color: #fff; }
+.nx-side__bell:active { transform: scale(0.94); }
+.nx-side__bell:focus-visible { outline: 2px solid #38BDF8; outline-offset: 2px; }
+
+.nx-side__bell-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--nx-accent);
+  box-shadow: 0 0 0 2px var(--nx-sidebar-bg);
+}
+
+/* ---------- Notification dropdown — FIXED position, hangs right of sidebar ---------- */
+
+.nx-side__notif {
+  position: fixed;
+  top: 68px;
+  left: calc(var(--nx-sidebar-w) + 16px);
+  width: 340px;
+  max-width: calc(100vw - var(--nx-sidebar-w) - 32px);
+  background: var(--nx-surface);
+  color: var(--nx-ink);
+  border-radius: var(--nx-r-md);
+  box-shadow: var(--nx-shadow-lg);
+  border: 1px solid var(--nx-line);
+  z-index: 200;
+  padding: 8px;
+  animation: nx-notif-in 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes nx-notif-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.nx-side__notif-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  font-weight: 600;
+  font-size: var(--nx-fs-sm);
+  border-bottom: 1px solid var(--nx-line);
+  margin-bottom: 4px;
+}
+
+.nx-side__notif-head button {
+  font-size: 1.2rem;
+  color: var(--nx-muted);
+  line-height: 1;
+  padding: 0 6px;
+  border-radius: 4px;
+  transition: background 140ms ease;
+}
+.nx-side__notif-head button:hover {
+  background: var(--nx-bg-alt);
+  color: var(--nx-ink);
+}
+
+.nx-side__notif ul {
+  max-height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nx-side__notif li {
+  padding: 10px;
+  border-radius: var(--nx-r-sm);
+  font-size: var(--nx-fs-xs);
+}
+.nx-side__notif li.is-unread {
+  background: var(--nx-accent-soft-2);
+}
+.nx-side__notif li strong {
+  display: block;
+  font-size: var(--nx-fs-sm);
+  margin-bottom: 2px;
+  color: var(--nx-ink);
+}
+.nx-side__notif li p {
+  color: var(--nx-muted);
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+.nx-side__notif-time {
+  color: var(--nx-muted-2);
+  font-size: var(--nx-fs-2xs);
+  font-family: var(--nx-font-mono);
+}
+
+/* ---------- Workspace card ---------- */
+
+.nx-side__workspace {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--nx-sidebar-line);
+  border-radius: var(--nx-r-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nx-side__ws-label {
+  font-family: var(--nx-font-mono);
+  font-size: var(--nx-fs-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--nx-accent);
+  font-weight: 600;
+}
+.nx-side__ws-name {
+  color: #FFFFFF;
+  font-size: var(--nx-fs-sm);
+  font-weight: 600;
+}
+.nx-side__ws-mail {
+  color: var(--nx-sidebar-muted);
+  font-size: var(--nx-fs-2xs);
+  word-break: break-all;
+}
+
+/* ---------- Nav ---------- */
+
+.nx-side__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.nx-side__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--nx-r-sm);
+  font-size: var(--nx-fs-sm);
+  color: var(--nx-sidebar-muted);
+  transition: background 140ms cubic-bezier(0.16, 1, 0.3, 1),
+              color 140ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 140ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nx-side__link:hover {
+  background: var(--nx-sidebar-active);
+  color: #fff;
+  transform: translateX(2px);
+}
+.nx-side__link:active { transform: translateX(0) scale(0.98); }
+.nx-side__link.is-active {
+  background: var(--nx-sidebar-active);
+  color: #fff;
+  font-weight: 600;
+}
+.nx-side__link.is-active svg { color: var(--nx-accent); }
+.nx-side__link:focus-visible { outline: 2px solid #38BDF8; outline-offset: -2px; }
+
+/* ---------- Footer / sign out ---------- */
+
+.nx-side__foot {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.nx-side__signout {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: var(--nx-r-sm);
+  font-size: var(--nx-fs-sm);
+  color: var(--nx-sidebar-muted);
+  border: 1px solid var(--nx-sidebar-line);
+  background: transparent;
+  cursor: pointer;
+  transition: all 140ms cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  justify-content: flex-start;
+}
+.nx-side__signout:hover {
+  color: #FCA5A5;
+  background: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.3);
+}
+.nx-side__signout:active { transform: scale(0.98); }
+.nx-side__signout:focus-visible { outline: 2px solid #38BDF8; outline-offset: 2px; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .nx-side {
+    position: static;
+    height: auto;
+    width: 100%;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .nx-side__nav {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 4px;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .nx-side__nav::-webkit-scrollbar { display: none; }
+  .nx-side__link { flex-shrink: 0; }
+
+  .nx-side__notif {
+    position: fixed;
+    top: 70px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: none;
+  }
+
+  .nx-side__foot { flex-direction: row; margin-top: 0; }
+  .nx-side__signout { width: auto; }
+}

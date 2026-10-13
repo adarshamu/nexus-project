@@ -1,0 +1,144 @@
+/* ==========================================================================
+   FOOTER — mirrors the navbar in light; matches the sidebar in dark
+   ========================================================================== */
+
+.nx-foot {
+  background: #0F172A;
+  color: #CBD5E1;
+  padding-block: clamp(48px, 6vw, 72px);
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background var(--nx-dur-ui) var(--nx-ease-out),
+              border-color var(--nx-dur-ui) var(--nx-ease-out),
+              color var(--nx-dur-ui) var(--nx-ease-out);
+}
+
+/* Dark theme — match the sidebar's deep navy for a cohesive bookend */
+:root[data-theme="dark"] .nx-foot {
+  background: var(--nx-sidebar-bg);           /* #050B16 */
+  border-top: 1px solid var(--nx-sidebar-line);
+  color: var(--nx-sidebar-ink);               /* #E2E8F0 */
+}
+
+.nx-foot__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  gap: var(--nx-s-8);
+  align-items: start;
+}
+
+/* ---------- Brand ---------- */
+
+.nx-foot__brand .nx-logo {
+  color: #fff;
+}
+
+/* Force a high-contrast light gradient for the footer wordmark
+   regardless of theme, so it never disappears against a dark panel. */
+.nx-foot__brand .nx-logo__text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nx-foot__tagline {
+  margin-top: 16px;
+  font-size: var(--nx-fs-sm);
+  color: #94A3B8;
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+:root[data-theme="dark"] .nx-foot__tagline {
+  color: #94A3B8;
+}
+
+/* ---------- Link column ---------- */
+
+.nx-foot__head {
+  color: #FFFFFF;
+  font-size: var(--nx-fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-family: var(--nx-font-mono);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+:root[data-theme="dark"] .nx-foot__head {
+  color: #FFFFFF;
+}
+
+.nx-foot__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nx-foot__col a {
+  display: inline-block;
+  color: #94A3B8;
+  font-size: var(--nx-fs-sm);
+  padding: 4px 8px;
+  margin-left: -8px;
+  border-radius: var(--nx-r-xs);
+  transition:
+    color var(--nx-dur-fast) var(--nx-ease-out),
+    background var(--nx-dur-fast) var(--nx-ease-out),
+    transform var(--nx-dur-fast) var(--nx-ease-out);
+}
+
+.nx-foot__col a:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(2px);
+}
+
+:root[data-theme="dark"] .nx-foot__col a {
+  color: #94A3B8;
+}
+:root[data-theme="dark"] .nx-foot__col a:hover {
+  color: #FFFFFF;
+  background: rgba(56, 189, 248, 0.12);
+}
+
+/* ---------- Meta column — copyright + tagline ---------- */
+
+.nx-foot__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  text-align: right;
+  font-size: var(--nx-fs-xs);
+  color: #94A3B8;
+}
+
+/* The two lines inside meta were previously too dark. Use a mid-slate
+   that reads clearly against the navy panel. */
+.nx-foot__meta p {
+  color: #94A3B8;
+  line-height: 1.55;
+}
+
+:root[data-theme="dark"] .nx-foot__meta,
+:root[data-theme="dark"] .nx-foot__meta p {
+  color: #94A3B8;
+}
+
+/* Slightly dimmer for the second line (the marketing tagline) */
+.nx-foot__meta p + p {
+  color: #64748B;
+}
+
+:root[data-theme="dark"] .nx-foot__meta p + p {
+  color: #64748B;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 780px) {
+  .nx-foot__inner { grid-template-columns: 1fr; }
+  .nx-foot__meta  { align-items: flex-start; text-align: left; }
+}

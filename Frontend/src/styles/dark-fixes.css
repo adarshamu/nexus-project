@@ -1,0 +1,156 @@
+/* ==========================================================================
+   DARK MODE TEXT FIXES
+   Corrects every hardcoded light-mode color that became illegible on
+   tinted (soft) backgrounds in dark theme.
+   ========================================================================== */
+
+/* ---------- Overview / SkillQuest callouts ---------- */
+
+:root[data-theme="dark"] .nx-callout--strength .nx-callout__title {
+  color: #6EE7B7;
+}
+:root[data-theme="dark"] .nx-callout--focus .nx-callout__title {
+  color: #FCD34D;
+}
+:root[data-theme="dark"] .nx-callout__body {
+  color: #E2E8F0;
+  opacity: 1;
+}
+
+/* ---------- Skill status pills ---------- */
+
+:root[data-theme="dark"] .nx-pill--improving {
+  background: rgba(52, 211, 153, 0.16);
+  color: #6EE7B7;
+}
+:root[data-theme="dark"] .nx-pill--focus {
+  background: rgba(251, 191, 36, 0.16);
+  color: #FCD34D;
+}
+
+/* Landing SkillQuest panel pills */
+:root[data-theme="dark"] .nx-sq__pill--improving {
+  background: rgba(52, 211, 153, 0.16);
+  color: #6EE7B7;
+}
+:root[data-theme="dark"] .nx-sq__pill--focus {
+  background: rgba(251, 191, 36, 0.16);
+  color: #FCD34D;
+}
+
+/* ---------- Status pills (Admin, HumanAPI) ---------- */
+
+:root[data-theme="dark"] .nx-status--good {
+  background: rgba(52, 211, 153, 0.16);
+  color: #6EE7B7;
+}
+:root[data-theme="dark"] .nx-status--good .nx-status__dot {
+  background: #34D399;
+}
+:root[data-theme="dark"] .nx-status--warn {
+  background: rgba(251, 191, 36, 0.16);
+  color: #FCD34D;
+}
+:root[data-theme="dark"] .nx-status--warn .nx-status__dot {
+  background: #FBBF24;
+}
+:root[data-theme="dark"] .nx-status--muted {
+  background: rgba(148, 163, 184, 0.14);
+  color: #94A3B8;
+}
+:root[data-theme="dark"] .nx-status--muted .nx-status__dot {
+  background: #94A3B8;
+}
+
+/* ---------- Human API expert cards ---------- */
+
+:root[data-theme="dark"] .nx-ecard__status {
+  background: rgba(52, 211, 153, 0.16);
+  color: #6EE7B7;
+}
+:root[data-theme="dark"] .nx-ecard__status--off {
+  background: rgba(148, 163, 184, 0.14);
+  color: #94A3B8;
+}
+:root[data-theme="dark"] .nx-ecard__score {
+  color: #7DD3FC;
+}
+:root[data-theme="dark"] .nx-ecard__skill {
+  color: #94A3B8;
+}
+:root[data-theme="dark"] .nx-ecard__reason {
+  color: #CBD5E1;
+}
+
+/* ---------- SkillQuest insights ---------- */
+
+:root[data-theme="dark"] .nx-insight__tag {
+  background: rgba(148, 163, 184, 0.12);
+  color: #CBD5E1;
+}
+:root[data-theme="dark"] .nx-insight__tag--good {
+  background: rgba(52, 211, 153, 0.16);
+  color: #6EE7B7;
+}
+:root[data-theme="dark"] .nx-insight__tag--warn {
+  background: rgba(251, 191, 36, 0.16);
+  color: #FCD34D;
+}
+
+/* ---------- Panel links ---------- */
+
+:root[data-theme="dark"] .nx-panel__link {
+  color: #7DD3FC;
+}
+:root[data-theme="dark"] .nx-panel__link:hover {
+  color: #BAE6FD;
+}
+
+/* ---------- Overview admin callouts ---------- */
+
+:root[data-theme="dark"] .nx-adm__role--trainee {
+  background: rgba(56, 189, 248, 0.14);
+  color: #7DD3FC;
+}
+:root[data-theme="dark"] .nx-adm__role--expert {
+  background: rgba(52, 211, 153, 0.16);
+  color: #6EE7B7;
+}
+
+/* ---------- Course level pills ---------- */
+
+:root[data-theme="dark"] .nx-course__level {
+  background: rgba(148, 163, 184, 0.14);
+  color: #CBD5E1;
+}
+:root[data-theme="dark"] .nx-course__thumb span {
+  background: rgba(15, 23, 42, 0.55);
+  color: #7DD3FC;
+}
+
+/* ---------- Landing hero eyebrow ---------- */
+
+:root[data-theme="dark"] .nx-hero__eyebrow {
+  color: #CBD5E1;
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+:root[data-theme="dark"] .nx-hero__trust {
+  color: #94A3B8;
+}
+
+/* ---------- Landing feature/method links ---------- */
+
+:root[data-theme="dark"] .nx-sq__list li::before {
+  background: rgba(56, 189, 248, 0.2);
+  box-shadow: inset 0 0 0 4px #38BDF8;
+}
+
+/* ---------- Sidebar (always dark) ---------- */
+
+.nx-side__ws-name {
+  color: #FFFFFF !important;
+}
+.nx-side__ws-mail {
+  color: #94A3B8 !important;
+}
